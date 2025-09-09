@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion Simulator</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recursion Simulator Code</h1>
+    <pre><code>
+def recursion_simulator(function, *args, depth=0):
+    """
+    Simulates recursion by printing the call stack depth and arguments.
+    """
+    print(f"{'  ' * depth}Recursion depth {depth}: {function.__name__}({', '.join(map(str, args))})")
+    result = function(*args, depth=depth + 1)
+    print(f"{'  ' * depth}Returning from depth {depth}: {result}")
+    return result
+
+# Example recursive function
+def factorial(n, depth=0):
+    if n == 0:
+        return 1
+    return n * recursion_simulator(factorial, n - 1, depth=depth)
+
+# Test the recursion simulator
+if __name__ == "__main__":
+    print("Factorial result:", recursion_simulator(factorial, 5))
+    </code></pre>
+</body>
+</html>
